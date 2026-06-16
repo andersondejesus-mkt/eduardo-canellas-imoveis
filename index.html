@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eduardo Canellas Imóveis | Iguaba Grande e Região dos Lagos</title>
+  <meta name="description" content="Casas, apartamentos e terrenos à venda em Iguaba Grande. Eduardo Canellas Imóveis."/>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','SEU_PIXEL_ID');fbq('track','PageView');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=SEU_GTAG_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','SEU_GTAG_ID');function gtagConv(){gtag('event','conversion',{'send_to':'SEU_GTAG_ID/LABEL'});}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --wine:#7B1B2A; --winel:#9B2535; --gold:#C8943A; --goldl:#DFB060;
+      --dark:#2B2118; --dark2:#1A0E08; --white:#FFFFFF; --off:#F7F4F0;
+      --text:#2B2118; --sub:#6E6058; --bord:#DDD6CC; --green:#25D366;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;}
+
+    /* TOP BAR */
+    .topbar{background:var(--dark2);padding:7px 5%;display:flex;justify-content:flex-end;gap:1.5rem;}
+    .topbar a{color:rgba(255,255,255,.45);font-size:.75rem;text-decoration:none;transition:color .2s;}
+    .topbar a:hover{color:var(--gold);}
+    .tp{color:var(--gold)!important;font-weight:600;}
+
+    /* NAV */
+    nav{background:var(--wine);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:500;box-shadow:0 2px 14px rgba(0,0,0,.3);}
+    .logo-link{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-img{height:40px;width:auto;filter:brightness(0) invert(1);}
+    .logo-fb{display:none;flex-direction:column;}
+    .logo-fb .ln{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.05rem;font-weight:600;line-height:1;}
+    .logo-fb .ls{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,.8);font-size:.82rem;text-decoration:none;font-weight:500;letter-spacing:.04em;transition:color .2s;}
+    .nav-links a:hover{color:var(--gold);}
+    .nav-cta{background:var(--gold);color:var(--dark2);padding:.44rem 1.1rem;border-radius:3px;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;transition:background .2s;}
+    .nav-cta:hover{background:var(--goldl);}
+
+    /* ══════════════════════════════════════════════
+       HERO — tela cheia, foto com zoom lento (Ken Burns),
+       overlay vinho/dourado, urgência como elemento de assinatura
+    ══════════════════════════════════════════════ */
+    .hero{
+      position:relative;
+      min-height:88vh;
+      display:flex;align-items:center;
+      overflow:hidden;
+      background:var(--dark2);
+    }
+    .hero-photo-wrap{
+      position:absolute;inset:0;z-index:0;
+      overflow:hidden;
+    }
+    .hero-photo-wrap img{
+      width:100%;height:100%;object-fit:cover;
+      display:block;
+      animation:heroZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom{
+      from{transform:scale(1);}
+      to{transform:scale(1.12);}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .hero-photo-wrap img{animation:none;}
+    }
+    .hero-overlay{
+      position:absolute;inset:0;z-index:1;
+      background:linear-gradient(
+        110deg,
+        rgba(26,14,8,.92) 0%,
+        rgba(26,14,8,.74) 32%,
+        rgba(123,27,42,.30) 58%,
+        rgba(26,14,8,.20) 100%
+      );
+    }
+
+    /* Fita diagonal de urgência — referência visual a placas "vende-se" físicas,
+       cortada no canto, é o elemento de assinatura do hero */
+    .urgency-ribbon{
+      position:absolute;top:0;right:0;z-index:3;
+      width:230px;height:230px;overflow:hidden;
+      pointer-events:none;
+    }
+    .urgency-ribbon span{
+      position:absolute;top:42px;right:-58px;
+      width:300px;
+      background:var(--gold);
+      color:var(--dark2);
+      text-align:center;
+      font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      padding:7px 0;
+      transform:rotate(45deg);
+      box-shadow:0 4px 14px rgba(0,0,0,.35);
+    }
+
+    .hero-content{
+      position:relative;z-index:2;
+      width:100%;max-width:1160px;margin:0 auto;
+      padding:0 5%;
+    }
+
+    .hero-urgency-pill{
+      display:inline-flex;align-items:center;gap:7px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(200,148,58,.55);
+      color:var(--gold-l, var(--gold));
+      font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      padding:6px 14px;border-radius:30px;
+      margin-bottom:1.4rem;
+    }
+    .pulse-dot{
+      width:7px;height:7px;border-radius:50%;background:#FF4040;
+      animation:pulseDot 1.6s ease-in-out infinite;
+      flex-shrink:0;
+    }
+    @keyframes pulseDot{
+      0%,100%{box-shadow:0 0 0 0 rgba(255,64,64,.6);}
+      50%{box-shadow:0 0 0 6px rgba(255,64,64,0);}
+    }
+
+    .hero-content h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.5rem,5.5vw,4.4rem);
+      font-weight:700;line-height:1.05;color:#fff;
+      max-width:680px;margin-bottom:.9rem;
+      text-shadow:0 4px 30px rgba(0,0,0,.4);
+    }
+    .hero-content h1 em{color:var(--gold);font-style:italic;}
+
+    .hero-content .hero-sub{
+      font-size:1.05rem;color:rgba(255,255,255,.72);
+      max-width:480px;margin-bottom:2rem;font-weight:300;line-height:1.7;
+    }
+
+    /* Card de imóvel compacto sobreposto — preço + specs essenciais */
+    .hero-prop-card{
+      display:inline-flex;align-items:center;gap:1.4rem;
+      background:rgba(255,255,255,.97);
+      border-radius:8px;
+      padding:1rem 1.5rem;
+      margin-bottom:2rem;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+      flex-wrap:wrap;
+    }
+    .hpc-price{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.7rem;font-weight:700;color:var(--wine);
+      line-height:1;
+    }
+    .hpc-price small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;color:var(--sub);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+    .hpc-div{width:1px;height:32px;background:var(--bord);}
+    .hpc-specs{display:flex;gap:1rem;}
+    .hpc-specs span{font-size:.78rem;color:var(--text);font-weight:600;}
+
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+    .btn-hero-wa{
+      background:var(--green);color:#fff;
+      padding:1.05rem 2.1rem;border-radius:5px;
+      font-weight:700;font-size:1rem;text-decoration:none;
+      display:inline-flex;align-items:center;gap:9px;
+      box-shadow:0 10px 30px rgba(37,211,102,.4);
+      transition:transform .15s,box-shadow .2s;
+    }
+    .btn-hero-wa:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(37,211,102,.5);}
+    .btn-hero-more{
+      background:transparent;color:#fff;
+      border:1.5px solid rgba(255,255,255,.4);
+      padding:1.05rem 1.7rem;border-radius:5px;
+      font-weight:600;font-size:.95rem;text-decoration:none;
+      transition:border-color .2s,background .2s;
+    }
+    .btn-hero-more:hover{border-color:var(--gold);background:rgba(200,148,58,.1);}
+
+    .hero-trust{
+      margin-top:1.8rem;
+      display:flex;align-items:center;gap:8px;
+      color:rgba(255,255,255,.5);font-size:.8rem;
+    }
+    .hero-trust strong{color:var(--gold);}
+
+    /* SEARCH BAR */
+    .sbar{background:var(--dark);padding:1.1rem 5%;display:flex;gap:.75rem;align-items:flex-end;flex-wrap:wrap;}
+    .sg{display:flex;flex-direction:column;gap:4px;flex:1;min-width:130px;}
+    .sg label{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+    .sg input,.sg select{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:3px;padding:.55rem .8rem;font-family:'Inter',sans-serif;font-size:.84rem;color:#fff;outline:none;transition:border-color .2s;appearance:none;}
+    .sg input::placeholder{color:rgba(255,255,255,.3);}
+    .sg input:focus,.sg select:focus{border-color:var(--gold);}
+    .sg select option{background:var(--dark);}
+    .sbtn{background:var(--gold);color:var(--dark2);border:none;padding:.58rem 1.8rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.05em;cursor:pointer;align-self:flex-end;transition:background .2s,transform .15s;}
+    .sbtn:hover{background:var(--goldl);transform:translateY(-1px);}
+
+    /* SECTION */
+    .sec{padding:70px 5%;}
+    .sec-head{text-align:center;margin-bottom:2.5rem;}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--dark);line-height:1.2;}
+    .sec-title span{color:var(--gold);font-style:italic;}
+
+    /* GRID IMÓVEIS */
+    .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem;}
+    .pc{border:1px solid var(--bord);border-radius:4px;overflow:hidden;background:#fff;transition:transform .25s,box-shadow .25s;cursor:pointer;}
+    .pc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(43,33,24,.13);}
+    .pi{height:210px;position:relative;overflow:hidden;}
+    .pi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s;}
+    .pc:hover .pi img{transform:scale(1.06);}
+    .pb{position:absolute;top:10px;left:10px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;}
+    .bs{background:var(--wine);color:#fff;}
+    .bn{background:var(--gold);color:var(--dark2);}
+    .be{background:var(--dark);color:var(--gold);}
+    .pinfo{padding:1rem 1.1rem 1.2rem;}
+    .pa{font-size:.78rem;color:var(--sub);margin-bottom:.3rem;line-height:1.4;}
+    .pst{font-size:.67rem;color:var(--wine);font-weight:600;margin-bottom:.4rem;}
+    .pp{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+    .psp{display:flex;gap:1rem;flex-wrap:wrap;}
+    .psr{font-size:.74rem;color:var(--sub);}
+    .pf{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--bord);display:flex;justify-content:flex-end;}
+    .pwa{background:#FDF5E6;color:var(--wine);font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:5px 13px;border-radius:2px;text-decoration:none;border:1px solid rgba(200,148,58,.35);transition:background .2s,color .2s;}
+    .pwa:hover{background:var(--wine);color:#fff;}
+
+    .vm-wrap{text-align:center;}
+    .btn-vm{display:inline-block;border:2px solid var(--gold);color:var(--gold);padding:.7rem 2.5rem;border-radius:3px;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s;}
+    .btn-vm:hover{background:var(--gold);color:var(--dark2);}
+
+    /* DOIS BLOCOS */
+    .dual{display:grid;grid-template-columns:1fr 1fr;}
+    .blk-dark{background:var(--dark);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;}
+    .blk-dark h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:1rem;}
+    .blk-dark h2 em{color:var(--gold);font-style:italic;}
+    .blk-dark p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.75rem;max-width:380px;}
+    .btn-al{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark2);padding:.75rem 1.75rem;border-radius:3px;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;width:fit-content;transition:background .2s;}
+    .btn-al:hover{background:var(--goldl);}
+    .blk-photo{position:relative;min-height:380px;background:url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop') center/cover no-repeat;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 5%;}
+    .blk-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,14,8,.92) 0%,rgba(26,14,8,.3) 60%,transparent 100%);}
+    .bp-body{position:relative;z-index:1;}
+    .blk-photo h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.8rem;}
+    .blk-photo h2 em{color:var(--gold);font-style:italic;}
+    .blk-photo p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:1.5rem;max-width:380px;}
+    .btn-vd{display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;padding:.75rem 1.75rem;border-radius:3px;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;width:fit-content;border:1px solid var(--winel);transition:background .2s;}
+    .btn-vd:hover{background:var(--winel);}
+
+    /* BUSCAS POPULARES */
+    .popular{background:var(--off);}
+    .pgp{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem 2rem;margin-top:2rem;}
+    .pgl{color:var(--sub);font-size:.9rem;text-decoration:none;padding:.35rem 0;border-bottom:1px solid var(--bord);display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s;}
+    .pgl::before{content:'→';color:var(--gold);font-size:.8rem;}
+    .pgl:hover{color:var(--wine);border-color:var(--wine);}
+
+    /* FORM */
+    .leadsec{background:#fff;}
+    .ldin{max-width:680px;margin:0 auto;text-align:center;}
+    .ldin p{font-size:.9rem;color:var(--sub);margin-bottom:2rem;margin-top:.5rem;}
+    .ldf{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;}
+    .lff{grid-column:1/-1;}
+    .lf label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:5px;}
+    .lf input,.lf select{width:100%;padding:.7rem 1rem;border:1.5px solid var(--bord);border-radius:3px;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);background:var(--off);outline:none;appearance:none;transition:border-color .2s,box-shadow .2s;}
+    .lf input:focus,.lf select:focus{border-color:var(--wine);box-shadow:0 0 0 3px rgba(123,27,42,.1);}
+    .lf input::placeholder{color:#B0A4A0;}
+    .btn-ld{grid-column:1/-1;background:var(--wine);color:#fff;border:none;padding:.95rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.05em;cursor:pointer;margin-top:.25rem;transition:background .2s,transform .15s;}
+    .btn-ld:hover{background:var(--winel);transform:translateY(-1px);}
+    .fpriv{font-size:.68rem;color:#B0A4A0;text-align:center;margin-top:.75rem;}
+    .ty{display:none;text-align:center;padding:1.5rem;}
+    .ty-ic{font-size:2.5rem;margin-bottom:.5rem;}
+    .ty h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--wine);margin-bottom:.4rem;}
+    .ty p{font-size:.83rem;color:var(--sub);margin-bottom:1rem;}
+    .ty-wa{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;padding:.7rem 1.5rem;border-radius:3px;font-weight:700;font-size:.88rem;text-decoration:none;}
+
+    /* FOOTER */
+    footer{background:var(--dark2);padding:3rem 5% 1.5rem;text-align:center;}
+    .fl{display:flex;justify-content:center;margin-bottom:1rem;}
+    .fl img{height:50px;filter:brightness(0) invert(1);}
+    .ftel{color:var(--gold);font-size:.88rem;font-weight:600;margin-bottom:.4rem;}
+    .flinks{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .flinks a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.8rem;transition:color .2s;}
+    .flinks a:hover{color:var(--gold);}
+    .fsoc{display:flex;justify-content:center;gap:.75rem;margin-bottom:1.5rem;}
+    .fsoc a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:.9rem;transition:background .2s,color .2s;}
+    .fsoc a:hover{background:var(--wine);color:#fff;}
+    .fcreci{font-size:.68rem;color:rgba(255,255,255,.2);margin-top:.5rem;}
+    .fbot{border-top:1px solid rgba(255,255,255,.07);padding-top:1rem;margin-top:1.5rem;font-size:.72rem;color:rgba(255,255,255,.18);}
+
+    /* WA */
+    .waf{position:fixed;bottom:28px;right:28px;z-index:600;width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.45);animation:wap 2.5s ease-in-out infinite;transition:transform .2s;}
+    .waf:hover{transform:scale(1.1);}
+    @keyframes wap{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45);}50%{box-shadow:0 4px 36px rgba(37,211,102,.75);}}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s;}
+    .rv.in{opacity:1;transform:none;}
+    .rv.d1{transition-delay:.08s;}.rv.d2{transition-delay:.16s;}.rv.d3{transition-delay:.24s;}
+    .rv.d4{transition-delay:.32s;}.rv.d5{transition-delay:.40s;}.rv.d6{transition-delay:.48s;}
+
+    @media(max-width:1024px){.pgrid{grid-template-columns:repeat(2,1fr);}.dual{grid-template-columns:1fr;}.pgp{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:900px){
+      .hero{min-height:84vh;}
+      .hero-prop-card{padding:.85rem 1.1rem;gap:1rem;}
+      .urgency-ribbon{width:170px;height:170px;}
+      .urgency-ribbon span{top:30px;right:-52px;width:230px;font-size:.6rem;padding:5px 0;}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}.topbar{display:none;}.sg{min-width:100%;flex:none;}.sbtn{width:100%;}.pgrid{grid-template-columns:1fr;}.ldf{grid-template-columns:1fr;}.pgp{grid-template-columns:1fr;}
+      .hero{min-height:78vh;}
+      .hero-actions{flex-direction:column;align-items:stretch;}
+      .btn-hero-wa,.btn-hero-more{justify-content:center;width:100%;}
+      .hero-prop-card{width:100%;justify-content:space-between;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="tel:+5522998412362" class="tp">📞 (22) 99841-2362</a>
+  <a href="tel:+552221340140">(22) 2134-0140</a>
+  <a href="https://wa.me/5522998412362" target="_blank">WhatsApp</a>
+  <a href="#contato">Contato</a>
+  <a href="#">CRECI J-0987470</a>
+</div>
+
+<nav>
+  <a class="logo-link" href="#">
+    <img class="logo-img" src="/mnt/user-data/uploads/Untitled_design_Original.jpeg" alt="Eduardo Canellas Imóveis"
+         onerror="this.style.display='none';document.getElementById('lfb').style.display='flex'">
+    <div class="logo-fb" id="lfb"><span class="ln">Eduardo Canellas</span><span class="ls">I M Ó V E I S</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#imoveis">Imóveis</a></li>
+    <li><a href="#vender">Vender</a></li>
+    <li><a href="#buscas">Regiões</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5522998412362?text=Olá!%20Vi%20o%20site%20e%20quero%20ver%20imóveis"
+     class="nav-cta" target="_blank" onclick="track('nav')">💬 WhatsApp</a>
+</nav>
+
+<!-- HERO — tela cheia, foto com zoom lento, urgência como gatilho principal -->
+<section class="hero">
+  <div class="hero-photo-wrap">
+    <img
+      src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop"
+      alt="Casa em destaque à venda em Iguaba Grande"
+    >
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="urgency-ribbon"><span>Últimas Unidades</span></div>
+
+  <div class="hero-content">
+    <p class="hero-urgency-pill"><span class="pulse-dot"></span> Oportunidade limitada · Iguaba Grande</p>
+    <h1>Sua casa nova<br>está <em>esperando</em> por você</h1>
+    <p class="hero-sub">Imóveis selecionados na Região dos Lagos com condições especiais — enquanto durar o estoque atual.</p>
+
+    <div class="hero-prop-card">
+      <div class="hpc-price">R$ 380.000<small>Casa · Centro, Iguaba</small></div>
+      <div class="hpc-div"></div>
+      <div class="hpc-specs">
+        <span>🛏 3 qts</span>
+        <span>📐 150m²</span>
+        <span>🚗 2 vagas</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/5522998412362?text=Olá!%20Vi%20o%20site%20e%20quero%20garantir%20uma%20das%20últimas%20oportunidades%20em%20Iguaba%20Grande"
+         class="btn-hero-wa" target="_blank" onclick="track('hero_urgencia')">💬 Quero Garantir a Minha Agora</a>
+      <a href="#imoveis" class="btn-hero-more">Ver Todos os Imóveis</a>
+    </div>
+
+    <p class="hero-trust">⭐ <strong>4,9</strong> no Google &nbsp;·&nbsp; <strong>200+</strong> imóveis vendidos &nbsp;·&nbsp; resposta em até 1 hora</p>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="sbar">
+  <div class="sg"><label>Localização</label><input type="text" placeholder="Cidade, bairro..."></div>
+  <div class="sg"><label>Preço Mínimo</label><input type="text" placeholder="R$ 0"></div>
+  <div class="sg"><label>Preço Máximo</label><input type="text" placeholder="R$ 1.000.000"></div>
+  <div class="sg"><label>Quartos</label>
+    <select><option>Qualquer</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select>
+  </div>
+  <div class="sg"><label>Banheiros</label>
+    <select><option>Qualquer</option><option>1+</option><option>2+</option><option>3+</option></select>
+  </div>
+  <button class="sbtn" onclick="document.getElementById('imoveis').scrollIntoView({behavior:'smooth'})">🔍 Buscar</button>
+</div>
+
+<!-- IMÓVEIS — 6 casas com fotos reais -->
+<section class="sec rv" id="imoveis" style="background:#fff;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="sec-head">
+      <h2 class="sec-title"><span>Imóveis em</span> Destaque</h2>
+    </div>
+    <div class="pgrid">
+
+      <!-- 1: Casa térrea com jardim verde -->
+      <div class="pc rv d1" onclick="goWA('Casa com Quintal – Centro, R$ 380.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Casa com Quintal">
+          <span class="pb bs">À Venda</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Rua das Flores, 142 — Centro, Iguaba Grande, RJ</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 380.000</p>
+          <div class="psp"><span class="psr">🛏 3 quartos</span><span class="psr">📐 150 m²</span><span class="psr">🚿 2 banhs</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Casa%20Centro%20R$380k" target="_blank" onclick="track('c1');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+      <!-- 2: Casa com piscina, alto padrão -->
+      <div class="pc rv d2" onclick="goWA('Casa com Piscina Condomínio, R$ 720.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Casa com Piscina">
+          <span class="pb be">Exclusivo</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Cond. Verde Lagos, Lote 17 — Iguaba Grande, RJ</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 720.000</p>
+          <div class="psp"><span class="psr">🛏 4 quartos</span><span class="psr">📐 280 m²</span><span class="psr">🚿 3 banhs</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Casa%20Piscina%20R$720k" target="_blank" onclick="track('c2');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+      <!-- 3: Casa moderna fachada clara -->
+      <div class="pc rv d3" onclick="goWA('Casa Moderna Fachada, R$ 490.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Casa Moderna">
+          <span class="pb bn">Novo</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Av. Central, 330 — Iguaba Grande, RJ 28940</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 490.000</p>
+          <div class="psp"><span class="psr">🛏 3 quartos</span><span class="psr">📐 180 m²</span><span class="psr">🚿 2 banhs</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Casa%20Moderna%20R$490k" target="_blank" onclick="track('c3');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+      <!-- 4: Casa simples bem conservada -->
+      <div class="pc rv d4" onclick="goWA('Casa 2 Quartos Bairro Residencial, R$ 280.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Casa Residencial">
+          <span class="pb bs">À Venda</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Rua do Sol, 88 — Bairro Residencial, Iguaba Grande</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 280.000</p>
+          <div class="psp"><span class="psr">🛏 2 quartos</span><span class="psr">📐 95 m²</span><span class="psr">🚿 1 banh</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Casa%20R$280k" target="_blank" onclick="track('c4');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+      <!-- 5: Mansão alto padrão -->
+      <div class="pc rv d5" onclick="goWA('Mansão Alto Padrão 5 Quartos, R$ 1.250.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Mansão Alto Padrão">
+          <span class="pb be">Alto Padrão</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Cond. Bela Vista, Casa 5 — Iguaba Grande, RJ</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 1.250.000</p>
+          <div class="psp"><span class="psr">🛏 5 quartos</span><span class="psr">📐 420 m²</span><span class="psr">🚿 4 banhs</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Mansão%20R$1.25M" target="_blank" onclick="track('c5');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+      <!-- 6: Casa boa localização, valor acessível -->
+      <div class="pc rv d6" onclick="goWA('Casa Próx Lagoa 2 Quartos, R$ 195.000')">
+        <div class="pi">
+          <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Casa Próx Lagoa">
+          <span class="pb bn">Oportunidade</span>
+        </div>
+        <div class="pinfo">
+          <p class="pa">Rua Nova, 210 — Próx. à Lagoa, Iguaba Grande</p>
+          <p class="pst">(À Venda)</p>
+          <p class="pp">R$ 195.000</p>
+          <div class="psp"><span class="psr">🛏 2 quartos</span><span class="psr">📐 78 m²</span><span class="psr">🚿 1 banh</span></div>
+          <div class="pf"><a class="pwa" href="https://wa.me/5522998412362?text=Interesse:%20Casa%20Lagoa%20R$195k" target="_blank" onclick="track('c6');event.stopPropagation()">Tenho interesse →</a></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="vm-wrap">
+      <a href="https://wa.me/5522998412362?text=Quero%20ver%20todos%20os%20imóveis%20disponíveis"
+         class="btn-vm" target="_blank" onclick="track('ver_mais')">Ver Mais Imóveis</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOIS BLOCOS -->
+<div class="dual rv" id="vender">
+  <div class="blk-dark">
+    <h2>Receba <em>Novos Imóveis</em><br>em Primeira Mão</h2>
+    <p>Nos diga o que você procura e enviaremos os melhores imóveis de Iguaba Grande assim que estiverem disponíveis.</p>
+    <a href="https://wa.me/5522998412362?text=Quero%20receber%20alertas%20de%20novos%20imóveis"
+       class="btn-al" target="_blank" onclick="track('alerta')">💬 Receber Alertas</a>
+  </div>
+  <div class="blk-photo">
+    <div class="bp-body">
+      <h2>Pensando em<br><em>Vender</em> seu Imóvel?</h2>
+      <p>Precificar errado pode custar muito caro. Receba uma avaliação gratuita de um especialista em Iguaba Grande.</p>
+      <a href="https://wa.me/5522998412362?text=Quero%20avaliar%20meu%20imóvel%20em%20Iguaba%20Grande"
+         class="btn-vd" target="_blank" onclick="track('vender')">Avaliação Gratuita</a>
+    </div>
+  </div>
+</div>
+
+<!-- BUSCAS POPULARES -->
+<section class="sec popular rv" id="buscas">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="sec-head"><h2 class="sec-title"><span>Buscas</span> Populares</h2></div>
+    <div class="pgp">
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20Iguaba%20Grande" target="_blank">Iguaba Grande</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20Cabo%20Frio" target="_blank">Cabo Frio</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20Búzios" target="_blank">Búzios</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20Arraial%20do%20Cabo" target="_blank">Arraial do Cabo</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20São%20Pedro%20da%20Aldeia" target="_blank">São Pedro da Aldeia</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Imóveis%20em%20Araruama" target="_blank">Araruama</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Casas%20à%20venda%20Iguaba%20Grande" target="_blank">Casas em Iguaba Grande</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Apartamentos%20Iguaba%20Grande" target="_blank">Apartamentos em Iguaba Grande</a>
+      <a class="pgl" href="https://wa.me/5522998412362?text=Terrenos%20Iguaba%20Grande" target="_blank">Terrenos em Iguaba Grande</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="sec leadsec rv" id="contato">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="ldin">
+      <h2 class="sec-title"><span>Fale com um</span> Especialista</h2>
+      <p>Preencha e um corretor entra em contato em até 1 hora.</p>
+      <div id="lfw">
+        <div class="ldf">
+          <div class="lf"><label>Nome</label><input type="text" id="ln" placeholder="Seu nome completo"></div>
+          <div class="lf"><label>WhatsApp</label><input type="tel" id="lt" placeholder="(22) 9 9999-9999"></div>
+          <div class="lf"><label>Tipo de imóvel</label>
+            <select id="ltp"><option value="">Selecione...</option><option>Casa</option><option>Apartamento</option><option>Terreno</option><option>Sítio / Chácara</option></select>
+          </div>
+          <div class="lf"><label>Faixa de investimento</label>
+            <select id="lv"><option value="">Selecione...</option><option>Até R$ 250.000</option><option>R$ 250k – R$ 500k</option><option>R$ 500k – R$ 800k</option><option>Acima de R$ 800.000</option></select>
+          </div>
+          <div class="lf lff"><label>Mensagem (opcional)</label><input type="text" id="lm" placeholder="O que você está buscando?"></div>
+          <button class="btn-ld lff" onclick="submitLead()">Quero ser atendido →</button>
+        </div>
+        <p class="fpriv">🔒 Dados confidenciais. Sem spam.</p>
+      </div>
+      <div class="ty" id="lty">
+        <div class="ty-ic">🎉</div>
+        <h3>Recebemos seu contato!</h3>
+        <p>Um especialista entrará em contato no seu WhatsApp em breve.</p>
+        <a href="https://wa.me/5522998412362" class="ty-wa" target="_blank">💬 Falar no WhatsApp agora</a>
+      </div>
+
+      <!-- Endereço físico da imobiliária -->
+      <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--bord);display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+        <p style="font-size:.85rem;color:var(--sub);">📍 Km 1333, Rod. Amaral Peixoto, 96 — Laguna Azul, Iguaba Grande - RJ, 28960-000</p>
+        <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center;">
+          <span style="font-size:.82rem;color:var(--gold);">★★★★★ 4,9 no Google (18 avaliações)</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eduardo+Canellas+Imóveis+Iguaba+Grande"
+             target="_blank" style="font-size:.82rem;color:var(--wine);font-weight:600;text-decoration:none;border-bottom:1px solid var(--wine);">
+            Como chegar →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">
+    <img src="/mnt/user-data/uploads/Untitled_design_Original.jpeg" alt="Eduardo Canellas Imóveis" onerror="this.style.display='none'">
+  </div>
+  <div class="ftel">(22) 99841-2362 &nbsp;|&nbsp; (22) 2134-0140 &nbsp;|&nbsp; eduardocanellasimoveis.com.br</div>
+  <div style="font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:1rem;">
+    📍 Km 1333, Rod. Amaral Peixoto, 96 — Laguna Azul, Iguaba Grande - RJ, 28960-000
+  </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:6px;margin-bottom:1.25rem;">
+    <span style="color:var(--gold);font-size:.85rem;">★★★★★</span>
+    <span style="color:rgba(255,255,255,.55);font-size:.8rem;">4,9 no Google (18 avaliações)</span>
+  </div>
+  <div class="flinks">
+    <a href="#imoveis">Imóveis</a><a href="#vender">Vender</a>
+    <a href="#buscas">Regiões</a><a href="#contato">Contato</a>
+  </div>
+  <div class="fsoc">
+    <a href="https://www.instagram.com/eduardocanellasimoveis" title="Instagram" target="_blank">📷</a>
+    <a href="#" title="Facebook">📘</a>
+    <a href="https://youtube.com/@eduardocanellasimoveis5601" title="YouTube" target="_blank">▶️</a>
+    <a href="https://wa.me/5522998412362" title="WhatsApp" target="_blank">💬</a>
+  </div>
+  <div class="fcreci">CRECI J-0987470 &nbsp;|&nbsp; Iguaba Grande – RJ</div>
+  <div class="fbot">© 2024 Eduardo Canellas Imóveis. Todos os direitos reservados.</div>
+</footer>
+
+<a href="https://wa.me/5522998412362?text=Olá!%20Vi%20o%20site%20e%20quero%20saber%20mais"
+   class="waf" target="_blank" onclick="track('waf')">💬</a>
+
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // Garante que a foto do imóvel em destaque carrega — testa fallback se necessário
+  (function(){
+    const urls = [
+      'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop',
+      'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop',
+      'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop'
+    ];
+    const heroImg = document.querySelector('.hero-photo-wrap img');
+    if (!heroImg) return;
+    let idx = 0;
+    function tryNext() {
+      if (idx >= urls.length) return;
+      heroImg.src = urls[idx++];
+      heroImg.onerror = tryNext;
+    }
+    heroImg.onerror = tryNext;
+  })();
+
+  function track(s){if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Iguaba Grande',content_category:s});if(typeof gtagConv!=='undefined')gtagConv();if(typeof gtag!=='undefined')gtag('event','generate_lead',{event_label:s});}
+  function goWA(im){track('card');window.open('https://wa.me/5522998412362?text=Olá!%20Tenho%20interesse%20no%20imóvel:%20'+encodeURIComponent(im),'_blank');}
+  function submitLead(){
+    const n=document.getElementById('ln').value.trim();
+    const t=document.getElementById('lt').value.trim();
+    if(!n||!t){alert('Preencha nome e WhatsApp.');return;}
+    track('form');
+    document.getElementById('lfw').style.display='none';
+    document.getElementById('lty').style.display='block';
+    const tp=document.getElementById('ltp').value;
+    const v=document.getElementById('lv').value;
+    const m=document.getElementById('lm').value;
+    const msg=encodeURIComponent(`Olá! Sou ${n}, preenchi o formulário e quero ver imóveis em Iguaba Grande.${tp?' Busco: '+tp:''}${v?'. Investimento: '+v:''}${m?'. Obs: '+m:''}.`);
+    setTimeout(()=>window.open('https://wa.me/5522998412362?text='+msg,'_blank'),1500);
+  }
+  document.getElementById('lt').addEventListener('input',function(e){
+    let v=e.target.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>=7)v=`(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if(v.length>=2)v=`(${v.slice(0,2)}) ${v.slice(2)}`;
+    e.target.value=v;
+  });
+  (function(){const p=new URLSearchParams(window.location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{if(p.get(k))sessionStorage.setItem(k,p.get(k));});})();
+</script>
+</body>
+</html>
